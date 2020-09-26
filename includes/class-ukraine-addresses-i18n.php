@@ -24,24 +24,38 @@
  * @subpackage Ukraine_Addresses/includes
  * @author     Your Name <email@example.com>
  */
-class Ukraine_Addresses_i18n {
+class Ukraine_Addresses_i18n
+{
+    /**
+     * The current domain of the plugin.
+     *
+     * @since    1.0.0
+     * @access   protected
+     * @var      string $domain The current domain of the plugin.
+     */
+    protected $domain;
 
+    /**
+     * Initialize the plugins domain
+     *
+     * @since    1.0.0
+     */
+    public function __construct()
+    {
+        $this->domain = defined('UKRAINE_ADDRESSES_DOMAIN') ? UKRAINE_ADDRESSES_DOMAIN : 'ukraine-addresses';
+    }
 
-	/**
-	 * Load the plugin text domain for translation.
-	 *
-	 * @since    1.0.0
-	 */
-	public function load_plugin_textdomain() {
-
-		load_plugin_textdomain(
-			'ukraine-addresses',
-			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
-		);
-
-	}
-
-
-
+    /**
+     * Load the plugin text domain for translation.
+     *
+     * @since    1.0.0
+     */
+    public function load_plugin_textdomain()
+    {
+        load_plugin_textdomain(
+            $this->domain,
+            false,
+            dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
+        );
+    }
 }

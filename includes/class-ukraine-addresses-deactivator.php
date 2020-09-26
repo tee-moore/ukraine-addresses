@@ -20,17 +20,17 @@
  * @subpackage Ukraine_Addresses/includes
  * @author     Your Name <email@example.com>
  */
-class Ukraine_Addresses_Deactivator {
-
-	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
-	 *
-	 * @since    1.0.0
-	 */
-	public static function deactivate() {
-
-	}
-
+class Ukraine_Addresses_Deactivator
+{
+    /**
+     * Short Description. (use period)
+     *
+     * Long Description.
+     *
+     * @since    1.0.0
+     */
+    public static function deactivate()
+    {
+        //
+    }
 }

@@ -20,8 +20,8 @@
  * @subpackage Ukraine_Addresses/includes
  * @author     Your Name <email@example.com>
  */
-class Ukraine_Addresses_Uninstaller {
-
+class Ukraine_Addresses_Uninstaller
+{
     /**
      * Short Description. (use period)
      *
@@ -29,8 +29,8 @@ class Ukraine_Addresses_Uninstaller {
      *
      * @since    1.0.0
      */
-    public static function uninstall() {
+    public static function uninstall()
+    {
 
     }
-
 }
