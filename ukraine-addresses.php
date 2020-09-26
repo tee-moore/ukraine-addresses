@@ -57,8 +57,18 @@ function deactivate_ukraine_addresses() {
 	Ukraine_Addresses_Deactivator::deactivate();
 }
 
+/**
+ * The code that runs during plugin removal.
+ * This action is documented in includes/class-ukraine-addresses-uninstaller.php
+ */
+function uninstall_ukraine_addresses() {
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-ukraine-addresses-uninstaller.php';
+    Ukraine_Addresses_Uninstaller::uninstall();
+}
+
 register_activation_hook( __FILE__, 'activate_ukraine_addresses' );
 register_deactivation_hook( __FILE__, 'deactivate_ukraine_addresses' );
+register_uninstall_hook(__FILE__, 'uninstall_ukraine_addresses' );
 
 /**
  * The core plugin class that is used to define internationalization,
