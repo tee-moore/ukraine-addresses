@@ -148,8 +148,12 @@ class Ukraine_Addresses
             $this->get_version_plugin()
         );
 
+        //scripts
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+
+        $this->loader->add_action('wpcf7_init', $plugin_admin, 'wpcf7_add_form_tag_select_group', 9);
+        $this->loader->add_action('wpcf7_admin_init', $plugin_admin, 'wpcf7_add_tag_generator_select_optgroup', 25);
     }
 
     /**
