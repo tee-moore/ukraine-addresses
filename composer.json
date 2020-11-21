@@ -1,0 +1,19 @@
+{
+    "name": "wplabs/ukraine-addresses",
+    "description": "Plugin for Ukraine addresses API",
+    "type": "plugin",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "wplabs",
+            "email": "wplabs@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Inc\\": "./src"
+        }
+    }
+}
