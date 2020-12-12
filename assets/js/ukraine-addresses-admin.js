@@ -30,3 +30,7 @@
 	 */
 
 })( jQuery );
+
+jQuery(document).ready( function($){
+	$('#element').val();
+});
