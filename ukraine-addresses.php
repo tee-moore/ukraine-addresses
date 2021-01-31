@@ -22,6 +22,9 @@
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
+use UkraineAddresses\Base\Activator;
+use UkraineAddresses\Base\Deactivator;
+
 /**
  * If this file is called directly, abort.
  */
@@ -43,6 +46,13 @@ define('UA_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('UA_PLUGIN_VERSION', '1.0.0');
 define('UA_PLUGIN_DOMAIN', 'ua');
 define('UA_PLUGIN_ADMIN_SLUG', 'ukraine-addresses-settings');
+define('UA_PLUGIN_TAMPLATE_PATH', UA_PLUGIN_PATH . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR);
+
+/**
+ * Fired during plugin activation and deactivation.
+ */
+register_activation_hook(__FILE__, [Activator::class, 'activate']);
+register_deactivation_hook(__FILE__, [Deactivator::class, 'deactivate']);
 
 /**
  * Begins execution of the plugin.

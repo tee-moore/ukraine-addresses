@@ -17,6 +17,7 @@ namespace UkraineAddresses;
 
 use UkraineAddresses\Base\Activator;
 use UkraineAddresses\Base\AddressTag;
+use UkraineAddresses\Base\Ajax;
 use UkraineAddresses\Base\Assets;
 use UkraineAddresses\Base\Deactivator;
 use UkraineAddresses\Base\Translator;
@@ -32,23 +33,14 @@ if (!class_exists( Bootstrap::class)) {
          */
         public function run()
         {
-            $this->define_activation_and_deactivation_hooks();
-            $this->define_assets_hooks();
-            $this->define_locale();
-            $this->define_admin_hooks();
-            $this->define_public_hooks();
+            $this->defineAssetsHooks();
+            $this->defineLocaleHooks();
+            $this->defineContactFormTag();
+            $this->defineAdminHooks();
+            $this->defineAjax();
         }
 
-        /**
-         * Fired during plugin activation and deactivation.
-         */
-        private function define_activation_and_deactivation_hooks()
-        {
-            register_activation_hook(Activator::class, 'activate');
-            register_deactivation_hook(Deactivator::class, 'deactivate');
-        }
-
-        private function define_assets_hooks()
+        private function defineAssetsHooks()
         {
             (new Assets)->addHook();
         }
@@ -56,27 +48,35 @@ if (!class_exists( Bootstrap::class)) {
         /**
          * Define the locale for this plugin for internationalization.
          */
-        private function define_locale()
+        private function defineLocaleHooks()
         {
             (new Translator)->addHook();
+        }
+
+        /**
+         * Register all of the hooks related to the
+         */
+        private function defineContactFormTag()
+        {
+            (new AddressTag)->addHook();
         }
 
         /**
          * Register all of the hooks related to the admin area functionality
          * of the plugin.
          */
-        private function define_admin_hooks()
+        private function defineAdminHooks()
         {
             (new Admin)->addHook();
         }
 
         /**
-         * Register all of the hooks related to the public-facing functionality
+         * Register all of the hooks related to the Ajax functionality
          * of the plugin.
          */
-        private function define_public_hooks()
+        private function defineAjax()
         {
-            (new AddressTag)->addHook();
+            (new Ajax())->addHook();
         }
     }
 }

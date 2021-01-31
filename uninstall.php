@@ -27,5 +27,14 @@
 
 // If uninstall not called from WordPress, then exit.
 if (!defined('WP_UNINSTALL_PLUGIN')) {
-    exit;
+    die();
+}
+
+$optionsForDelete = [
+  'ua_secret_token',
+  'ua_refresh_token',
+];
+
+foreach ($optionsForDelete as $option) {
+    delete_option($option);
 }

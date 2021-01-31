@@ -27,7 +27,7 @@ class Assets
     public function public_enqueue_styles()
     {
         wp_enqueue_style(
-            UA_PLUGIN_DOMAIN . 'public-style',
+            UA_PLUGIN_DOMAIN . '-public-style',
             UA_PLUGIN_URL . 'assets/css/ukraine-addresses-public.css',
             [],
             UA_PLUGIN_VERSION,
@@ -41,11 +41,31 @@ class Assets
     public function public_enqueue_scripts()
     {
         wp_enqueue_script(
-            UA_PLUGIN_DOMAIN . 'public-script',
+            UA_PLUGIN_DOMAIN . '-public-script',
             UA_PLUGIN_URL . 'assets/js/ukraine-addresses-public.js',
             ['jquery'],
             UA_PLUGIN_VERSION,
             false
+        );
+
+        $autoshow = Helper::getValue('ua_autoshow_selects');
+        $captionType = Helper::getValue('caption_type');
+        wp_localize_script(
+            UA_PLUGIN_DOMAIN . '-public-script',
+            'params',
+            [
+                'autoshow' => $autoshow,
+                'captionType' => $captionType,
+            ]
+        );
+
+        wp_localize_script(
+            UA_PLUGIN_DOMAIN . '-public-script',
+            'ua_ajax',
+            array(
+                'url' => admin_url('admin-ajax.php'),
+                'nonce' => wp_create_nonce('ua_ajax_nonce')
+            )
         );
     }
 
@@ -55,7 +75,7 @@ class Assets
     public function admin_enqueue_styles()
     {
         wp_enqueue_style(
-            UA_PLUGIN_DOMAIN . 'admin-style',
+            UA_PLUGIN_DOMAIN . '-admin-style',
             UA_PLUGIN_URL . 'assets/css/ukraine-addresses-admin.css',
             [],
             UA_PLUGIN_VERSION,
@@ -69,7 +89,7 @@ class Assets
     public function admin_enqueue_scripts()
     {
         wp_enqueue_script(
-            UA_PLUGIN_DOMAIN . 'admin-script',
+            UA_PLUGIN_DOMAIN . '-admin-script',
             UA_PLUGIN_URL . 'assets/js/ukraine-addresses-admin.js',
             ['jquery'],
             UA_PLUGIN_VERSION,
